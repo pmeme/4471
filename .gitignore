@@ -3,3 +3,8 @@
 ################################################################################
 
 /.vs
+/Lidless/.vs/Lidless/v15
+/Lidless/lidless-web/ClientApp/e2e/src/app.e2e-spec.ts
+/Lidless/.vs/config
+/Lidless/node_modules
+/Lidless/LidlessWebApi/obj

@@ -1,0 +1,43 @@
+<ng-template #loginTemplate>
+  <h2 mat-dialog-title class="header-text">Login</h2>
+  <mat-dialog-content>
+    <form fxLayout="column" [formGroup]="form">
+      <mat-form-field>
+        <input matInput autocomplete="username" formControlName="email" placeholder="Email" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput autocomplete="current-password" formControlName="password" type="password" placeholder="Password" />
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayout="row">
+    <ng-container *ngIf="!loadingObserver; else loading">
+      <button mat-raised-button color="primary" (click)="login()" [disabled]="!form.valid">LOGIN</button>
+    </ng-container>
+    <button mat-raised-button color="primary">REGISTER</button>
+  </mat-dialog-actions>
+</ng-template>
+
+
+<ng-template #signup>
+  <h2 mat-dialog-title class="header-text">Sign Up</h2>
+  <mat-dialog-content>
+    <form fxLayout="column" [formGroup]="form">
+      <mat-form-field>
+        <input matInput autocomplete="username" formControlName="email" placeholder="Email" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput autocomplete="current-password" formControlName="password" type="password" placeholder="Password" />
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+
+  </mat-dialog-actions>
+</ng-template>
+
+<ng-template #loading>
+  <div *ngIf="loadingObserver$ | async">
+    hi
+  </div>
+</ng-template>
