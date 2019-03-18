@@ -13,8 +13,8 @@ import { Observable } from 'rxjs';
 export class LoginComponent implements AfterViewInit {
   @ViewChild('loginTemplate', { read: TemplateRef }) private _loginTemplate: TemplateRef<any>;
 
-  form: FormGroup; 
-  loadingObserver$: Observable<any>;
+  form: FormGroup;
+  isLoading: boolean = false;
   matDialogRef: MatDialogRef<TemplateRef<any>>;
 
   constructor(
@@ -35,17 +35,19 @@ export class LoginComponent implements AfterViewInit {
   ngAfterViewInit() {
     let options = {
       disableClose: true,
-      minWidth: '20em',
-      minHeight: '20em'
+      minWidth: '17em',
+      minHeight: '12em'
     } as MatDialogConfig;
     this.matDialogRef = this._matDialog.open(this._loginTemplate, options);
     this._changeDetectorRef.detectChanges();
   }
 
   public login() {
-    this.loadingObserver$ = this._authService.login(this.form.controls.email.value, this.form.controls.password.value).pipe(tap((result) => {
-      this.close(true); 
-    }));
+    this.isLoading = true;
+    this._authService.login(this.form.controls.email.value, this.form.controls.password.value).subscribe((result) => {
+      this.isLoading = false;
+      this.close(true);
+    });
   }
 
   public close(value: boolean) {

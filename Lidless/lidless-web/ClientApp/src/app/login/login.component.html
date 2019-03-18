@@ -11,7 +11,7 @@
     </form>
   </mat-dialog-content>
   <mat-dialog-actions fxLayout="row">
-    <ng-container *ngIf="!loadingObserver; else loading">
+    <ng-container *ngIf="!isLoading; else loading">
       <button mat-raised-button color="primary" (click)="login()" [disabled]="!form.valid">LOGIN</button>
     </ng-container>
     <button mat-raised-button color="primary">REGISTER</button>

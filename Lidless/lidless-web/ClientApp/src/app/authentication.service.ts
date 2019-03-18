@@ -26,6 +26,7 @@ export class AuthenticationService {
   public login(email: string, password: string): Observable<auth.UserCredential> {
     return from(this._fireAuth.auth.signInWithEmailAndPassword(email, password)).pipe(tap((user: auth.UserCredential) => {
       this._user = user;
+      console.log('ff');
     }));
   }
 
