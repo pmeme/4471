@@ -26,7 +26,6 @@ export class AuthenticationService {
   public login(email: string, password: string): Observable<auth.UserCredential> {
     return from(this._fireAuth.auth.signInWithEmailAndPassword(email, password)).pipe(tap((user: auth.UserCredential) => {
       this._user = user;
-      console.log('ff');
     }));
   }
 
@@ -36,8 +35,8 @@ export class AuthenticationService {
     }));
   }
 
-  public signUp(email: string, password: string): Observable<auth.UserCredential> {
-    return from(this._fireAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(email, password)).pipe(tap((user: auth.UserCredential) => {
+  public register(email: string, password: string): Observable<auth.UserCredential> {
+    return from(this._fireAuth.auth.createUserWithEmailAndPassword(email, password)).pipe(tap((user: auth.UserCredential) => {
       this._user = user;
     }));
   }

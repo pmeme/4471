@@ -1,5 +1,29 @@
 <ng-template #loginTemplate>
-  <h2 mat-dialog-title class="header-text">Login</h2>
+  <div fxLayout="row" fxLayoutAlign="space-between">
+    <h2 mat-dialog-title class="header-text">Login</h2>
+    <a class="register-text" (click)="setTemplate(signupTemplate)">Register</a>
+  </div>
+  <mat-dialog-content>
+    <form fxLayout="column" [formGroup]="form">
+      <mat-form-field>
+        <input matInput autocomplete="username" formControlName="email" placeholder="Email" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput autocomplete="current-password" formControlName="password" type="password" placeholder="Password" />
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between">
+    <ng-container *ngIf="!isLoading; else loading">
+      <button mat-raised-button color="primary" (click)="login()" [disabled]="!form.valid">LOGIN</button>
+    </ng-container>
+    <div *ngIf="error">
+      <p class="text-warn">{{error}}</p>
+    </div>
+  </mat-dialog-actions>
+</ng-template>
+<ng-template #signupTemplate>
+  <h2 mat-dialog-title class="header-text">Register</h2>
   <mat-dialog-content>
     <form fxLayout="column" [formGroup]="form">
       <mat-form-field>
@@ -12,32 +36,16 @@
   </mat-dialog-content>
   <mat-dialog-actions fxLayout="row">
     <ng-container *ngIf="!isLoading; else loading">
-      <button mat-raised-button color="primary" (click)="login()" [disabled]="!form.valid">LOGIN</button>
+      <button mat-raised-button color="primary" (click)="register()" [disabled]="!form.valid">REGISTER</button>
     </ng-container>
-    <button mat-raised-button color="primary">REGISTER</button>
-  </mat-dialog-actions>
-</ng-template>
-
-
-<ng-template #signup>
-  <h2 mat-dialog-title class="header-text">Sign Up</h2>
-  <mat-dialog-content>
-    <form fxLayout="column" [formGroup]="form">
-      <mat-form-field>
-        <input matInput autocomplete="username" formControlName="email" placeholder="Email" />
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput autocomplete="current-password" formControlName="password" type="password" placeholder="Password" />
-      </mat-form-field>
-    </form>
-  </mat-dialog-content>
-  <mat-dialog-actions>
-
+    <button mat-raised-button color="accent" (click)="setTemplate(loginTemplate)">CANCEL</button>
   </mat-dialog-actions>
 </ng-template>
 
 <ng-template #loading>
-  <div *ngIf="loadingObserver$ | async">
-    hi
+  <div class="loader">
+    <mat-spinner diameter="25" strokeWidth="4" color="accent"></mat-spinner>
   </div>
+  <ng-container *ngIf="loadingObserver$ | async">
+  </ng-container>
 </ng-template>

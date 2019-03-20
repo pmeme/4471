@@ -12,7 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './login/login.component';
 import { environment } from 'src/environments/environment';
-import { MatDialogModule, MatInputModule, MatFormFieldModule, MatButtonModule } from '@angular/material';
+import { MatDialogModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatProgressSpinnerModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthenticationService } from './authentication.service';
@@ -32,6 +32,7 @@ import { RouterModule } from '@angular/router';
     FlexLayoutModule,
     MatInputModule,
     MatFormFieldModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatDialogModule,
