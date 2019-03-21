@@ -9,24 +9,31 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './login/login.component';
 import { environment } from 'src/environments/environment';
 import { MatDialogModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatProgressSpinnerModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthenticationService } from './authentication.service';
-import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { AccountManagerComponent } from './account-manager/account-manager.component';
+import { NavModule } from './nav/nav.module';
+import { SettingsComponent } from './settings/settings.component';
+import { FileManagerComponent } from './file-manager/file-manager.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    NavComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    AccountManagerComponent,
+    SettingsComponent,
+    FileManagerComponent
   ],
   imports: [
     BrowserModule,
+    NavModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FlexLayoutModule,

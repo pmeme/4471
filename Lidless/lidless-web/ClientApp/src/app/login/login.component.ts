@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
 import { AuthenticationService } from '../authentication.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TemplatePortal } from '@angular/cdk/portal';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
   selector: 'login',
@@ -11,17 +12,24 @@ import { TemplatePortal } from '@angular/cdk/portal';
 })
 export class LoginComponent implements AfterViewInit {
   @ViewChild('loginTemplate', { read: TemplateRef }) private _loginTemplate: TemplateRef<any>;
-  
+
   form: FormGroup;
   isLoading: boolean = false;
   error: string = "";
   matDialogRef: MatDialogRef<TemplateRef<any>>;
 
+  private _redirectUrl: string;
+
   constructor(
+    private _activatedRoute: ActivatedRoute,
     private _authService: AuthenticationService,
+    private _router: Router,
     private _viewContainerRef: ViewContainerRef,
     private _matDialog: MatDialog
   ) {
+    _activatedRoute.queryParamMap.subscribe((result: ParamMap) => {
+      this._redirectUrl = result.get("redirect");
+    });
     this.setUpFormGroup();
   }
 
@@ -39,8 +47,8 @@ export class LoginComponent implements AfterViewInit {
   ngAfterViewInit() {
     let options = {
       disableClose: true,
-      minWidth: '17em',
-      minHeight: '12em'
+      minWidth: '17rem',
+      minHeight: '12rem'
     } as MatDialogConfig;
 
     this.matDialogRef = this._matDialog.open(this._loginTemplate, options);
@@ -49,17 +57,24 @@ export class LoginComponent implements AfterViewInit {
   public login(): void {
     this.isLoading = true;
     this._authService.login(this.form.controls.email.value, this.form.controls.password.value).subscribe((result) => {
-      this.isLoading = false;
-      this.close(true);
+      this._navigate();
     }, () => { this.isLoading = false; this.error = "Failed to login" });
   }
 
   public register(): void {
     this.isLoading = true;
     this._authService.register(this.form.controls.email.value, this.form.controls.password.value).subscribe((result) => {
-      this.isLoading = false;
-      this.close(true);
+      this._navigate();
     }, () => { this.isLoading = false; this.error = "Failed to register" });
+  }
+
+  private _navigate() {
+    this.isLoading = false;
+    this.close(true);
+    if (!this._redirectUrl)
+      this._redirectUrl = '';
+
+    this._router.navigate([this._redirectUrl]);
   }
 
   public close(value: boolean) {

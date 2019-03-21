@@ -1,4 +1,4 @@
-import { CanActivateChild, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { CanActivateChild, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, NavigationExtras, UrlTree, Params } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { Injectable } from '@angular/core';
 
@@ -13,8 +13,16 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    let extras = {
+      replaceUrl: false,
+      skipLocationChange: true,
+      queryParams: {
+        redirect: route.routeConfig.path
+      } as Params
+    } as NavigationExtras;
+
     if (!this._authService.isLoggedIn)
-      this._router.navigateByUrl("login");
+      this._router.navigate(["login"], extras);
 
     return this._authService.isLoggedIn;
   }

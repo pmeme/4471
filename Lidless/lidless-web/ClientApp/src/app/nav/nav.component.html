@@ -1,3 +1,14 @@
-<p>
-  nav works!
-</p>
+<div fxLayout="column">
+  <button mat-icon-button routerLink="home" routerLinkActive #home="routerLinkActive">
+    <mat-icon [color]="home.isActive ? 'accent' : 'primary'" class="mdi mdi-home mdi-24px"></mat-icon>
+  </button>
+  <button mat-icon-button routerLink="settings" routerLinkActive #set="routerLinkActive">
+    <mat-icon [color]="set.isActive ? 'accent' : 'primary'" class="mdi mdi-settings mdi-24px"></mat-icon>
+  </button>
+  <button mat-icon-button routerLink="accounts" routerLinkActive #acts="routerLinkActive">
+    <mat-icon [color]="acts.isActive ? 'accent' : 'primary'" class="mdi mdi-account mdi-24px"></mat-icon>
+  </button>
+  <button mat-icon-button routerLink="files" routerLinkActive #fls="routerLinkActive">
+    <mat-icon [color]="fls.isActive ? 'accent' : 'primary'" class="mdi mdi-file mdi-24px"></mat-icon>
+  </button>
+</div>
