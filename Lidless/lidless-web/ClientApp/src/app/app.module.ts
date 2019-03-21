@@ -10,7 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
-import { environment } from 'src/environments/environment';
 import { MatDialogModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatProgressSpinnerModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guard';
@@ -20,6 +19,17 @@ import { AccountManagerComponent } from './account-manager/account-manager.compo
 import { NavModule } from './nav/nav.module';
 import { SettingsComponent } from './settings/settings.component';
 import { FileManagerComponent } from './file-manager/file-manager.component';
+import { environment } from '../environments/environment';
+import { WebviewDirective } from './directives/webview.directive';
+import { ElectronService } from './providers/electron.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -29,7 +39,8 @@ import { FileManagerComponent } from './file-manager/file-manager.component';
     HomeComponent,
     AccountManagerComponent,
     SettingsComponent,
-    FileManagerComponent
+    FileManagerComponent,
+    WebviewDirective
   ],
   imports: [
     BrowserModule,
@@ -42,7 +53,15 @@ import { FileManagerComponent } from './file-manager/file-manager.component';
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     MatButtonModule,
+    HttpClientModule,
     MatDialogModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (HttpLoaderFactory),
+        deps: [HttpClient]
+      }
+    }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
@@ -50,6 +69,7 @@ import { FileManagerComponent } from './file-manager/file-manager.component';
   ],
   providers: [
     AuthenticationService,
+    ElectronService,
     AuthGuard
   ],
   bootstrap: [AppComponent]

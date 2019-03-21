@@ -9,3 +9,8 @@ export const environment = {
     messagingSenderId: "198136587494"
   }
 };
+
+export const AppConfig = {
+  production: true,
+  environment: 'PROD'
+};
