@@ -16,6 +16,9 @@ const createWindow = () => {
     height: 600,
   });
 
+  mainWindow.setMenu(null);
+  mainWindow.setMenuBarVisibility(false);
+  
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/index.html`);
 

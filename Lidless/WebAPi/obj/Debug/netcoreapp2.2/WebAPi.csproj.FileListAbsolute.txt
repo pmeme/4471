@@ -1,0 +1,14 @@
+C:\4471\4471\Lidless\WebAPi\bin\Debug\netcoreapp2.2\WebAPi.deps.json
+C:\4471\4471\Lidless\WebAPi\bin\Debug\netcoreapp2.2\WebAPi.runtimeconfig.json
+C:\4471\4471\Lidless\WebAPi\bin\Debug\netcoreapp2.2\WebAPi.runtimeconfig.dev.json
+C:\4471\4471\Lidless\WebAPi\bin\Debug\netcoreapp2.2\WebAPi.dll
+C:\4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.csproj.CoreCompileInputs.cache
+C:\4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.RazorAssemblyInfo.cache
+C:\4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.RazorAssemblyInfo.cs
+C:\4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.AssemblyInfoInputs.cache
+C:\4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.AssemblyInfo.cs
+C:\4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.RazorTargetAssemblyInfo.cache
+C:\4471\4471\Lidless\WebAPi\bin\Debug\netcoreapp2.2\WebAPi.pdb
+C:\4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.dll
+C:\4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.pdb
+C:\4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.csprojAssemblyReference.cache

@@ -1,4 +1,6 @@
 <div fxLayout="row" fxFlex="100">
-  <nav *ngIf="authenticationService.isLoggedIn"></nav>
-  <router-outlet></router-outlet>
+  <nav class="nav-container" *ngIf="authenticationService.isLoggedIn"></nav>
+  <div class="content-container">
+    <router-outlet></router-outlet>
+  </div>
 </div>

@@ -20,7 +20,7 @@
   },
   "include": [
     "main.ts",
-    "src/**/*"
+    "src/**/*", "../../WebAPi/Controllers/BreachController.cs"
   ],
   "exclude": [
     "node_modules"

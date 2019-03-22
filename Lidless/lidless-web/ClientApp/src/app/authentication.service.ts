@@ -4,6 +4,7 @@ import { auth } from 'firebase/app';
 import { Observable, from } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { isNullOrUndefined } from 'util';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,9 @@ export class AuthenticationService {
 
   constructor(
     private _fireAuth: AngularFireAuth
-  ) { }
+  ) {
+
+  }
 
   public login(email: string, password: string): Observable<auth.UserCredential> {
     return from(this._fireAuth.auth.signInWithEmailAndPassword(email, password)).pipe(tap((user: auth.UserCredential) => {

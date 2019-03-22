@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-file-manager',
+  selector: 'file-manager',
   templateUrl: './file-manager.component.html',
   styleUrls: ['./file-manager.component.scss']
 })
