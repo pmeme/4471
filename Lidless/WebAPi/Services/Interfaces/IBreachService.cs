@@ -9,5 +9,8 @@ namespace WebAPi.Services.Interfaces
     public interface IBreachService
     {
         Task<List<BreachModel>> GetBreaches(string account);
+
+        Task<List<PasteModel>> GetPastes(string account);
+
     }
 }

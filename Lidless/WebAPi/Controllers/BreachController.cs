@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebAPi.Services.Interfaces;
@@ -22,7 +24,7 @@ namespace WebAPi.Controllers
         {
             try
             {
-                return Ok(_breachService.GetBreaches(account));
+                return Ok(_breachService.GetBreaches(account).Result);
             }
             catch(Exception ex)
             {
@@ -33,8 +35,16 @@ namespace WebAPi.Controllers
         [HttpGet("pastes/{account}")]
         public IActionResult GetPastes(string account)
         {
-            return null;
+            try
+            {
+                return Ok(_breachService.GetPastes(account).Result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
+
 
         [HttpGet("values")]
         public List<string> Test()

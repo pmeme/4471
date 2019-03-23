@@ -20,7 +20,7 @@
   },
   "include": [
     "main.ts",
-    "src/**/*", "../../WebAPi/Controllers/BreachController.cs"
+    "src/**/*", "../../WebAPi/Controllers/BreachController.cs", "../../WebAPi/Services/Interfaces/IPasteService.cs", "../../WebAPi/Services/PasteService.cs"
   ],
   "exclude": [
     "node_modules"

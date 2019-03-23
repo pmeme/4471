@@ -8,3 +8,4 @@
 /Lidless/.vs/config
 /Lidless/node_modules
 /Lidless/LidlessWebApi/obj
+/Lidless/lidless-web/ClientApp/src/app/services/Pwn.ts

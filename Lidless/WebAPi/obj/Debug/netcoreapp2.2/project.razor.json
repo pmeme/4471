@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "c:\\Users\\gaber\\Documents\\Spring 2019\\CSE 4471\\4471\\Lidless\\WebAPi\\WebAPi.csproj",
+  "TargetFramework": "netcoreapp2.2",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "MVC-2.1",
+    "LanguageVersion": "2.1",
+    "Extensions": [
+      {
+        "ExtensionName": "MVC-2.1"
+      }
+    ]
+  }
+}

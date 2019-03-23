@@ -12,3 +12,17 @@ C:\4471\4471\Lidless\WebAPi\bin\Debug\netcoreapp2.2\WebAPi.pdb
 C:\4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.dll
 C:\4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.pdb
 C:\4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.csprojAssemblyReference.cache
+C:\Users\gaber\Documents\Spring 2019\CSE 4471\4471\Lidless\WebAPi\bin\Debug\netcoreapp2.2\WebAPi.deps.json
+C:\Users\gaber\Documents\Spring 2019\CSE 4471\4471\Lidless\WebAPi\bin\Debug\netcoreapp2.2\WebAPi.runtimeconfig.json
+C:\Users\gaber\Documents\Spring 2019\CSE 4471\4471\Lidless\WebAPi\bin\Debug\netcoreapp2.2\WebAPi.runtimeconfig.dev.json
+C:\Users\gaber\Documents\Spring 2019\CSE 4471\4471\Lidless\WebAPi\bin\Debug\netcoreapp2.2\WebAPi.dll
+C:\Users\gaber\Documents\Spring 2019\CSE 4471\4471\Lidless\WebAPi\bin\Debug\netcoreapp2.2\WebAPi.pdb
+C:\Users\gaber\Documents\Spring 2019\CSE 4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.csprojAssemblyReference.cache
+C:\Users\gaber\Documents\Spring 2019\CSE 4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.csproj.CoreCompileInputs.cache
+C:\Users\gaber\Documents\Spring 2019\CSE 4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.RazorAssemblyInfo.cache
+C:\Users\gaber\Documents\Spring 2019\CSE 4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.RazorAssemblyInfo.cs
+C:\Users\gaber\Documents\Spring 2019\CSE 4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.AssemblyInfoInputs.cache
+C:\Users\gaber\Documents\Spring 2019\CSE 4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.AssemblyInfo.cs
+C:\Users\gaber\Documents\Spring 2019\CSE 4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.RazorTargetAssemblyInfo.cache
+C:\Users\gaber\Documents\Spring 2019\CSE 4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.dll
+C:\Users\gaber\Documents\Spring 2019\CSE 4471\4471\Lidless\WebAPi\obj\Debug\netcoreapp2.2\WebAPi.pdb

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PwndService } from '../services/pwnd.service';
+
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public breaches = [];
+
+  constructor(private _pwndService: PwndService) { }
 
   ngOnInit() {
+    this._pwndService.getAccountBreaches("mralawi7@gmail.com")
+      .subscribe(data => this.breaches = data);    
   }
+
+
+
+
 
 }
