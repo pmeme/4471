@@ -1,3 +1,30 @@
-<p>
-  account-manager works!
-</p>
+<div class="container-full-width">
+  <h2 class="styled-header">
+    Saved Accounts
+  </h2>
+  <table class="container-full-width" mat-table>
+    <ng-container matColumnDef="host">
+      <th mat-header-cell *matHeaderCellDef> Host </th>
+      <td mat-cell *matCellDef="let element"> {{element.host}} </td>
+    </ng-container>
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef> Username </th>
+      <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+    </ng-container>
+    <ng-container matColumnDef="password">
+      <th mat-header-cell *matHeaderCellDef> Password </th>
+      <td mat-cell *matCellDef="let element"></td>
+    </ng-container>
+    <ng-container matColumnDef="breaches">
+      <th mat-header-cell *matHeaderCellDef> Number of Breaches </th>
+      <td mat-cell *matCellDef="let element">{{element.breaches.length + element.pastes.length}}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

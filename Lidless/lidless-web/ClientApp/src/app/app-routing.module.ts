@@ -40,7 +40,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    onSameUrlNavigation: "ignore"
+    onSameUrlNavigation: "ignore",
+    useHash: true
   } as ExtraOptions)],
   exports: [RouterModule]
 })

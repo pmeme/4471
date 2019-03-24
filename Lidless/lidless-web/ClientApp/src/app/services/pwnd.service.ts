@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Pwn } from './Pwn';
-import { Breach } from './breach';
-
-// Lidless Account Checker
-const  headers = new  HttpHeaders().set("User-Agent", "Lidless Account Checker");
+import { Breach } from './models/breach';
+import { Paste } from './models/Paste';
 
 @Injectable()
 export class PwndService {
-  constructor(private http: HttpClient) { }
-  accountBreachUrl = 'api/breach/breaches/';
+  accountBreachUrl = 'api/breach';
 
-  getAccountBreaches(account): Observable<Breach[]> {
-    return this.http.get<Breach[]>(this.accountBreachUrl + account);
+  constructor(private http: HttpClient) { }
+
+  getAccountBreaches(account: string): Observable<Breach[]> {
+    return this.http.get<Breach[]>(`${this.accountBreachUrl}/breaches/${account}`);
   }
 
+  getAccountPastes(account: string): Observable<Paste[]> {
+    return this.http.get<Paste[]>(`${this.accountBreachUrl}/pastes/${account}`);
+  }
 }
 
 

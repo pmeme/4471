@@ -2,3 +2,14 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "@mdi/font/css/materialdesignicons.min.css";
 
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.styled-header {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: 300;
+  color: rgba(15, 6, 15, 0.86);
+}

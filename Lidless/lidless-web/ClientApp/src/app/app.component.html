@@ -1,4 +1,7 @@
-<div fxLayout="row" fxFlex="100">
+<header class="elevation-z6">
+  Account Manager
+</header>
+<div class="container">
   <nav class="nav-container" *ngIf="authenticationService.isLoggedIn"></nav>
   <div class="content-container">
     <router-outlet></router-outlet>
