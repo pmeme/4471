@@ -52,9 +52,9 @@ export class LoginComponent implements AfterViewInit {
     } as MatDialogConfig;
 
     this.matDialogRef = this._matDialog.open(this._loginTemplate, options);
-    this.form.controls.email.setValue("admin@admin.com");
-    this.form.controls.password.setValue("password");
-    this.login();
+    //this.form.controls.email.setValue("admin@admin.com");
+    //this.form.controls.password.setValue("password");
+    //this.login();
   }
 
   public login(): void {
