@@ -53,7 +53,6 @@ export class CreateAccountComponent implements OnInit {
   }
 
   cancel() {
-    console.log('close');
     this._matDialogRef.close(false);
   }
 }

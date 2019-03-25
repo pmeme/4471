@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
-import { MatDialogModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatProgressSpinnerModule, MatToolbarModule, MatTableModule, MatIconModule } from '@angular/material';
+import { MatDialogModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatProgressSpinnerModule, MatToolbarModule, MatTableModule, MatIconModule, MatMenuModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './home/home.component';
@@ -50,6 +50,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     NavModule,
     MatIconModule,
+    MatMenuModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FlexLayoutModule,

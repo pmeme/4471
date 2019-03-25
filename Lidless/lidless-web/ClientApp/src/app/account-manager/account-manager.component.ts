@@ -27,7 +27,8 @@ export class AccountManagerComponent implements OnInit {
   }
 
   public deleteAccount(account: Account) {
-    console.error("not implemented");
+    this._accountService.deleteAccount(account).subscribe((result) => {
+    });
   }
 
   public createAccountDialog() {

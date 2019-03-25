@@ -24,6 +24,10 @@ export class AccountService {
    return from(this._fireStore.collection(`${this._authService.user.user.uid}`).doc(account.id).set(account));
   }
 
+  public deleteAccount(account: Account): Observable<void> {
+    return from(this._fireStore.collection(`${this._authService.user.user.uid}`).doc(account.id).delete());
+  }
+
   public getAccounts(): AngularFirestoreCollection<Account> {
     return this._fireStore.collection<Account>(`${this._authService.user.user.uid}`);
   }
