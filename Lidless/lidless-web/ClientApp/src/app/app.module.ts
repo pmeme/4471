@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
-import { MatDialogModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatProgressSpinnerModule, MatToolbarModule, MatTableModule } from '@angular/material';
+import { MatDialogModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatProgressSpinnerModule, MatToolbarModule, MatTableModule, MatIconModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './home/home.component';
@@ -26,6 +26,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { PwndService } from './services/pwnd.service';
 import { AuthenticationService } from './services/authentication.service';
+import { CreateAccountComponent } from './account-manager/create-account/create-account.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -42,11 +43,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     SettingsComponent,
     HeaderComponent,
     FileManagerComponent,
-    WebviewDirective
+    WebviewDirective,
+    CreateAccountComponent
   ],
   imports: [
     BrowserModule,
     NavModule,
+    MatIconModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FlexLayoutModule,
@@ -76,6 +79,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     ElectronService,
     AuthGuard,
     PwndService
+  ],
+  entryComponents: [
+    CreateAccountComponent
   ],
   bootstrap: [AppComponent]
 })

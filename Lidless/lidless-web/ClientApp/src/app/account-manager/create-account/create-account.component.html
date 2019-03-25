@@ -1,0 +1,31 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <h2 mat-dialog-title class="header-text">Add Account</h2>
+  <h5>Import</h5>
+</div>
+<mat-dialog-content>
+  <form fxLayout="column" [formGroup]="form">
+    <mat-form-field>
+      <input matInput formControlName="username" placeholder="Username" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="host" placeholder="Host" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="password" type="password" placeholder="Password" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between">
+  <ng-container *ngIf="!isLoading; else loading">
+    <button mat-raised-button color="primary" (click)="createAccount()" [disabled]="!form.valid">CREATE</button>
+  </ng-container>
+  <button mat-raised-button color="primary" (click)="cancel()">CANCEL</button>
+  <div *ngIf="error">
+    <p class="text-warn">{{error}}</p>
+  </div>
+</mat-dialog-actions>
+<ng-template #loading>
+  <div class="loader">
+    <mat-spinner diameter="25" strokeWidth="4" color="accent"></mat-spinner>
+  </div>
+</ng-template>
