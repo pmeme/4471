@@ -1,16 +1,21 @@
 <h2 class="styled-header">Breaches for {{account.username}}</h2>
 <div *ngFor="let breach of breaches">
-  <div fxLayout="column">
-    <h2 class="styled-header">{{breach.title}}</h2>
-    <p>{{breach.breachDate | date: 'short'}}</p>
-    <p>
-      Data leaked:
-      <ng-container *ngFor="let class of breach.dataClasses; let last = last">
-        {{class}}{{last == true ? '' : ','}}
-      </ng-container>
-    </p>
-    <hr />
-    <div [innerHtml]="breach.description | sanitize">
-    </div>
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <button mat-icon-button>
+      <mat-icon class="mdi-close-circle mdi mdi-24px"></mat-icon>
+    </button>
+    <h2 class="styled-header">
+      {{breach.title}}
+    </h2>
+  </div>
+  <p>{{breach.breachDate | date: 'short'}}</p>
+  <p>
+    Data leaked:
+    <ng-container *ngFor="let class of breach.dataClasses; let last = last">
+      {{class}}{{last == true ? '' : ','}}
+    </ng-container>
+  </p>
+  <hr />
+  <div [innerHtml]="breach.description | sanitize">
   </div>
 </div>
