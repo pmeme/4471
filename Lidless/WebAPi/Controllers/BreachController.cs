@@ -19,12 +19,12 @@ namespace WebAPi.Controllers
             _breachService = service;
         }
 
-        [HttpGet("breaches/{account}")]
-        public IActionResult GetBreaches(string account)
+        [HttpGet("breaches/{account}/{domain?}")]
+        public IActionResult GetBreaches(string account, string domain = null)
         {
             try
             {
-                return Ok(_breachService.GetBreaches(account).Result);
+                return Ok(_breachService.GetBreaches(account, domain).Result);
             }
             catch(Exception ex)
             {

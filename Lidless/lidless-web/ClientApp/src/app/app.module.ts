@@ -28,6 +28,7 @@ import { PwndService } from './services/pwnd.service';
 import { AuthenticationService } from './services/authentication.service';
 import { CreateAccountComponent } from './account-manager/create-account/create-account.component';
 import { ViewBreachesComponent } from './account-manager/view-breaches/view-breaches.component';
+import { SanitizePipe } from './pipes/sanitize.pipe';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -46,7 +47,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FileManagerComponent,
     WebviewDirective,
     CreateAccountComponent,
-    ViewBreachesComponent
+    ViewBreachesComponent,
+    SanitizePipe
   ],
   imports: [
     BrowserModule,

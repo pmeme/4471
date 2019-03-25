@@ -15,11 +15,11 @@ namespace WebAPi.Services
     public class BreachService : IBreachService
     {
 
-        public async Task<List<BreachModel>> GetBreaches(string account)
+        public async Task<List<BreachModel>> GetBreaches(string accountId, string domain)
         {
             try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"https://haveibeenpwned.com/api/v2/breachedaccount/{ account }");
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"https://haveibeenpwned.com/api/v2/breachedaccount/{ accountId }");
                 request.UserAgent = "Lidless Account Checker";
                 request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
 
@@ -31,7 +31,10 @@ namespace WebAPi.Services
                     //System.Diagnostics.Debug.WriteLine(breachesAsJson);
                     List<BreachModel> breaches = JsonConvert.DeserializeObject<List<BreachModel>>(breachesAsJson);
                     //breaches.ForEach(delegate (BreachModel b) { System.Diagnostics.Debug.WriteLine(b.ToString()); });
-                    return breaches;
+                    if (domain != null)
+                        return breaches.Where(x => x.Domain == domain).ToList();
+                    else
+                        return breaches;
                 }
             }
             catch (Exception)

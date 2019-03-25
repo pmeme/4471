@@ -25,7 +25,7 @@ export class AccountManagerComponent implements OnInit, AfterViewInit {
     this.data = this._accountService.getAccounts().valueChanges().pipe(tap((result) => {
       result.forEach(x => {
         if (!x.breaches)
-          this._breachService.getAccountBreaches(x.username).subscribe((result) => { x.breaches = result; });
+          this._breachService.getAccountBreaches(x).subscribe((result) => { x.breaches = result; });
 
         if (!x.pastes)
           this._breachService.getAccountPastes(x.username).subscribe((result) => { x.pastes = result });

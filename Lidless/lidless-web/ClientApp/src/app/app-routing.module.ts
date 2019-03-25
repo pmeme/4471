@@ -8,7 +8,7 @@ import { AccountManagerComponent } from './account-manager/account-manager.compo
 import { FileManagerComponent } from './file-manager/file-manager.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ViewBreachesComponent } from './account-manager/view-breaches/view-breaches.component';
-import { ViewBreachResolver } from './account-manager/view-breaches/view-breach-resolver';
+import { BreachResolver, AccountResolver } from './account-manager/view-breaches/view-breach-resolver';
 
 const routes: Routes = [
   {
@@ -18,7 +18,10 @@ const routes: Routes = [
   {
     path: 'breaches/:id',
     component: ViewBreachesComponent,
-    resolve: [ViewBreachResolver],
+    resolve: {
+      breaches: BreachResolver,
+      account: AccountResolver
+    },
     canActivate: [AuthGuard]
   },
   {
