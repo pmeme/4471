@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { AccountManagerComponent } from './account-manager/account-manager.component';
 import { FileManagerComponent } from './file-manager/file-manager.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ViewBreachesComponent } from './account-manager/view-breaches/view-breaches.component';
+import { ViewBreachResolver } from './account-manager/view-breaches/view-breach-resolver';
 
 const routes: Routes = [
   {
@@ -14,9 +16,15 @@ const routes: Routes = [
     path: 'login'
   },
   {
+    path: 'breaches/:id',
+    component: ViewBreachesComponent,
+    resolve: [ViewBreachResolver],
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'accounts',
     component: AccountManagerComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'settings',

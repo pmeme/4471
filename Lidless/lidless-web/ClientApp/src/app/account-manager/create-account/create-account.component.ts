@@ -25,7 +25,6 @@ export class CreateAccountComponent implements OnInit {
   ngOnInit() {
   }
 
-
   private setUpFormGroup(): void {
     this.form = new FormGroup({
       username: new FormControl(null, [Validators.required]),

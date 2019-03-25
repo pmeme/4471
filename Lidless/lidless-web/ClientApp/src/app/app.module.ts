@@ -27,6 +27,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { PwndService } from './services/pwnd.service';
 import { AuthenticationService } from './services/authentication.service';
 import { CreateAccountComponent } from './account-manager/create-account/create-account.component';
+import { ViewBreachesComponent } from './account-manager/view-breaches/view-breaches.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -44,7 +45,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderComponent,
     FileManagerComponent,
     WebviewDirective,
-    CreateAccountComponent
+    CreateAccountComponent,
+    ViewBreachesComponent
   ],
   imports: [
     BrowserModule,

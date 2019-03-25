@@ -2,7 +2,12 @@
   width:100%;
 }
 
-
 .table-container {
   width: 75vw;
+  min-width:75vw;
+  max-width:75vw;
+}
+
+.green {
+  color:forestgreen;
 }

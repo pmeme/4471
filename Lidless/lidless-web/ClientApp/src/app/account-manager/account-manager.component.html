@@ -3,9 +3,9 @@
     <h2 class="styled-header">
       Saved Accounts
     </h2>
-      <button mat-icon-button>
-        <mat-icon class="mdi mdi-plus mdi-24px" (click)="createAccountDialog()"></mat-icon>
-      </button>
+    <button mat-icon-button>
+      <mat-icon class="mdi mdi-plus mdi-24px" (click)="createAccountDialog()"></mat-icon>
+    </button>
   </div>
   <table class="table-container" [dataSource]="data" mat-table>
     <ng-container matColumnDef="host">
@@ -33,6 +33,23 @@
         </div>
       </td>
     </ng-container>
+    <ng-container matColumnDef="breaches">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.breaches; else loading">
+          <ng-container *ngIf="element.breaches?.length > 0 || element.pastes?.length > 0; else noBreaches">
+            <button mat-icon-button [routerLink]="['/breaches', element.id]">
+              <mat-icon class="mdi mdi-alert mdi-24px" [color]="isAccountSevereStatus(element) ? 'warn' : 'accent'"></mat-icon>
+            </button>
+          </ng-container>
+        </ng-container>
+      </td>
+      <ng-template #noBreaches>
+        <button mat-icon-button>
+          <mat-icon class="mdi mdi-emoticon-excited mdi-24px green"></mat-icon>
+        </button>
+      </ng-template>
+    </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -44,3 +61,8 @@
     <button (click)="deleteAccount(item)" mat-menu-item>Delete</button>
   </ng-template>
 </mat-menu>
+<ng-template #loading>
+  <div class="loader">
+    <mat-spinner diameter="20" strokeWidth="2" color="primary"></mat-spinner>
+  </div>
+</ng-template>
