@@ -89,5 +89,8 @@
     "firebase": "^5.9.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
+  },
+  "dependencies": {
+    "@types/chrome": "0.0.81"
   }
 }

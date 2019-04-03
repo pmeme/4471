@@ -29,6 +29,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { CreateAccountComponent } from './account-manager/create-account/create-account.component';
 import { ViewBreachesComponent } from './account-manager/view-breaches/view-breaches.component';
 import { SanitizePipe } from './pipes/sanitize.pipe';
+import { ChromePopupComponent } from './chrome-popup/chrome-popup.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -48,7 +49,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     WebviewDirective,
     CreateAccountComponent,
     ViewBreachesComponent,
-    SanitizePipe
+    SanitizePipe,
+    ChromePopupComponent
   ],
   imports: [
     BrowserModule,

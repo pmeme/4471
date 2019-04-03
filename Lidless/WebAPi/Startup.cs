@@ -35,7 +35,7 @@ namespace WebAPi
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseCors(builder =>
-               builder.WithOrigins("http://localhost:4200")
+               builder.AllowAnyOrigin()
                    .WithMethods("POST", "GET", "PUT", "DELETE")
                    .AllowAnyHeader());
 
