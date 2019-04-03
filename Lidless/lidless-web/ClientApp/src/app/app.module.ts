@@ -27,6 +27,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { PwndService } from './services/pwnd.service';
 import { AuthenticationService } from './services/authentication.service';
 import { CreateAccountComponent } from './account-manager/create-account/create-account.component';
+import { ChangeAccountComponent } from './account-manager/change-account/change-account.component';
 import { ViewBreachesComponent } from './account-manager/view-breaches/view-breaches.component';
 import { SanitizePipe } from './pipes/sanitize.pipe';
 import { ChromePopupComponent } from './chrome-popup/chrome-popup.component';
@@ -48,6 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FileManagerComponent,
     WebviewDirective,
     CreateAccountComponent,
+    ChangeAccountComponent,
     ViewBreachesComponent,
     SanitizePipe,
     ChromePopupComponent
@@ -88,7 +90,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     PwndService
   ],
   entryComponents: [
-    CreateAccountComponent
+    CreateAccountComponent,
+    ChangeAccountComponent
   ],
   bootstrap: [AppComponent]
 })

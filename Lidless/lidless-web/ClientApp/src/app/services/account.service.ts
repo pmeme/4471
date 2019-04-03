@@ -24,6 +24,11 @@ export class AccountService {
    return from(this._fireStore.collection(`${this._authService.user.user.uid}`).doc(account.id).set(account));
   }
 
+  public changePassword(account: Account, newPassword: string): Observable<void> {
+    account.password = newPassword;
+    return from(this._fireStore.collection(`${this._authService.user.user.uid}`).doc(account.id).update({password: newPassword}));
+  }
+
   public deleteAccount(account: Account): Observable<void> {
     return from(this._fireStore.collection(`${this._authService.user.user.uid}`).doc(account.id).delete());
   }

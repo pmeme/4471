@@ -3,6 +3,7 @@ import { AccountService } from '../services/account.service';
 import { PwndService } from '../services/pwnd.service';
 import { MatDialog, MatDialogRef, MatDialogConfig, MatTable } from '@angular/material';
 import { CreateAccountComponent } from './create-account/create-account.component';
+import { ChangeAccountComponent } from './change-account/change-account.component';
 import { Observable, Subscription } from 'rxjs';
 import { Account } from '../services/models/Account.model';
 import { tap } from 'rxjs/operators';
@@ -43,6 +44,14 @@ export class AccountManagerComponent implements OnInit, AfterViewInit {
   public deleteAccount(account: Account) {
     this._accountService.deleteAccount(account).subscribe((result) => {
     });
+  }
+
+  public changeAccount(account: Account) {
+    let ref = this._matDialog.open(ChangeAccountComponent, { disableClose: false, minWidth: '10vw', minHeight: '5vh' } as MatDialogConfig);
+    ref.componentInstance.username = account.username;
+    ref.componentInstance.host = account.host;
+    ref.componentInstance.oldPassword = account.password;
+    ref.componentInstance.acc = account;
   }
 
   public createAccountDialog() {
