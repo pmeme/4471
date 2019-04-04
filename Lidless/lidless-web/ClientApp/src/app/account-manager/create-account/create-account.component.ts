@@ -29,11 +29,25 @@ export class CreateAccountComponent implements OnInit {
     this.form = new FormGroup({
       username: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [Validators.required]),
-      host: new FormControl(null, [Validators.required])
+      host: new FormControl(null, [Validators.required]),
+      domainRestricted: new FormControl(true)
     });
 
     this.form.valueChanges.subscribe((r) => {
       this.error = "";
+    });
+
+    this.form.get('domainRestricted').valueChanges.subscribe((result) => {
+      var hostControl = this.form.get('host');
+
+      if (!result) {
+        hostControl.disable();
+        hostControl.setValidators(null);
+      } else {
+        hostControl.enable();
+        hostControl.setValidators(Validators.required)
+      }
+
     });
   }
 
@@ -42,7 +56,8 @@ export class CreateAccountComponent implements OnInit {
     let account: Account = {
       username: this.form.controls.username.value,
       host: this.form.controls.host.value,
-      password: this.form.controls.password.value
+      password: this.form.controls.password.value,
+      domainRestricted: this.form.get('domainRestricted').value
     };
 
     this._accountService.createAccount(account).subscribe((result) => {

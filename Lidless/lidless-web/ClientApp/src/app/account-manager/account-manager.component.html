@@ -39,7 +39,8 @@
         <ng-container *ngIf="element.breaches; else loading">
           <ng-container *ngIf="element.breaches?.length > 0 || element.pastes?.length > 0; else noBreaches">
             <button mat-icon-button [routerLink]="['/breaches', element.id]">
-              <mat-icon class="mdi mdi-alert mdi-24px" [color]="isAccountSevereStatus(element) ? 'warn' : 'accent'"></mat-icon>
+              <mat-icon class="mdi mdi-alert mdi-24px" [color]="isAccountSevereStatus(element) ? 'warn' : 'accent'"
+                        matTooltip="{{element.breaches?.length + element.pastes?.length}} breaches"></mat-icon>
             </button>
           </ng-container>
         </ng-container>

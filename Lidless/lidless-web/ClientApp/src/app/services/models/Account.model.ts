@@ -6,6 +6,7 @@ export interface Account {
   username: string;
   host: string;
   password: string;
+  domainRestricted: boolean;
   breaches?: Breach[];
   pastes?: Paste[];
 }

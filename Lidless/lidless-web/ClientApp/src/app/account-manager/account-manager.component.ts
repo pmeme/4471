@@ -4,9 +4,9 @@ import { PwndService } from '../services/pwnd.service';
 import { MatDialog, MatDialogRef, MatDialogConfig, MatTable } from '@angular/material';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { ChangeAccountComponent } from './change-account/change-account.component';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, interval } from 'rxjs';
 import { Account } from '../services/models/Account.model';
-import { tap } from 'rxjs/operators';
+import { tap, retryWhen } from 'rxjs/operators';
 
 @Component({
   selector: 'account-manager',
@@ -26,10 +26,10 @@ export class AccountManagerComponent implements OnInit, AfterViewInit {
     this.data = this._accountService.getAccounts().valueChanges().pipe(tap((result) => {
       result.forEach(x => {
         if (!x.breaches)
-          this._breachService.getAccountBreaches(x).subscribe((result) => { x.breaches = result; });
+          this._breachService.getAccountBreaches(x).pipe(retryWhen((err) => interval(5000) )).subscribe((result) => { x.breaches = result; });
 
         if (!x.pastes)
-          this._breachService.getAccountPastes(x.username).subscribe((result) => { x.pastes = result });
+          this._breachService.getAccountPastes(x.username).pipe(retryWhen((err) => interval(5000))).subscribe((result) => { x.pastes = result });
       });
     }));
   }
@@ -55,7 +55,7 @@ export class AccountManagerComponent implements OnInit, AfterViewInit {
   }
 
   public createAccountDialog() {
-    this._matDialog.open(CreateAccountComponent, { disableClose: false, minWidth: '10vw', minHeight: '5vh' } as MatDialogConfig);
+    this._matDialog.open(CreateAccountComponent, { disableClose: false, width: '300px' } as MatDialogConfig);
   }
 
   public printHiddenPassword(ele: Account) {

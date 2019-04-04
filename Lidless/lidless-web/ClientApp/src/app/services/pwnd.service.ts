@@ -17,7 +17,10 @@ export class PwndService {
   ) { }
 
   getAccountBreaches(account: Account): Observable<Breach[]> {
-    return this.http.get<Breach[]>(`${this.accountBreachUrl}/breaches/${encodeURI(account.username)}/${account.host}`);
+    if (account.domainRestricted)
+      return this.http.get<Breach[]>(`${this.accountBreachUrl}/breaches/${encodeURI(account.username)}/${account.host}`);
+    else
+      return this.http.get<Breach[]>(`${this.accountBreachUrl}/breaches/${encodeURI(account.username)}`);
   }
 
   getAccountPastes(account: string): Observable<Paste[]> {
