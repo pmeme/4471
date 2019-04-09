@@ -5,9 +5,17 @@
   <form fxLayout="column" [formGroup]="form">
     <p>Host: {{host}}</p>
     <p>Username: {{username}}</p>
-    <mat-form-field>
-      <input matInput formControlName="password" [value]="oldPassword" />
-    </mat-form-field>
+    <div fxLayout="row" class="align-items">
+      <mat-form-field>
+        <input matInput formControlName="password" type="password" [value]="oldPassword" #passwordField />
+      </mat-form-field>
+      <button mat-icon-button (click)="generatePassword()">
+        <mat-icon class="mdi mdi-key-variant" color="primary"></mat-icon>
+      </button>
+      <button mat-icon-button (click)="toggleShowPassword()">
+        <mat-icon class="mdi mdi-eye" color="primary"></mat-icon>
+      </button>
+    </div>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between">

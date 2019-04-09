@@ -36,7 +36,7 @@ export class LoginComponent implements AfterViewInit {
   private setUpFormGroup(): void {
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [Validators.required, Validators.minLength(6)])
+      password: new FormControl(null, [Validators.required, Validators.minLength(6)]) 
     });
 
     this.form.valueChanges.subscribe((r) => {
@@ -52,9 +52,6 @@ export class LoginComponent implements AfterViewInit {
     } as MatDialogConfig;
 
     this.matDialogRef = this._matDialog.open(this._loginTemplate, options);
-    //this.form.controls.email.setValue("admin@admin.com");
-    //this.form.controls.password.setValue("password");
-    //this.login();
   }
 
   public login(): void {

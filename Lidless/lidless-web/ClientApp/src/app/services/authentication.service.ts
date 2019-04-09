@@ -3,8 +3,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { Observable, from } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { isNullOrUndefined } from 'util';
-import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +15,12 @@ export class AuthenticationService {
   }
 
   public get isLoggedIn(): boolean {
-    return !isNullOrUndefined(this._user);
+    return !!this._user;
   }
 
   constructor(
     private _fireAuth: AngularFireAuth
   ) {
-
   }
 
   public login(email: string, password: string): Observable<auth.UserCredential> {

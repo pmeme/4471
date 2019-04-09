@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 import { Account } from '../../../app/services/models/Account.model';
 import { AccountService } from '../../services/account.service';
 import { Observable } from 'rxjs';
+import { ToolService } from '../../services/tool.service';
 
 @Component({
   selector: 'create-account',
@@ -11,6 +12,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./create-account.component.scss']
 })
 export class CreateAccountComponent implements OnInit {
+  @ViewChild('passwordField', { read: ElementRef })
+  passwordField: ElementRef;
+
   form: FormGroup;
   error: string;
   isLoading: boolean = false;
@@ -18,6 +22,7 @@ export class CreateAccountComponent implements OnInit {
   constructor(
     private _matDialogRef: MatDialogRef<CreateAccountComponent>,
     private _accountService: AccountService,
+    private _toolService: ToolService
   ) {
     this.setUpFormGroup();
   }
@@ -63,6 +68,18 @@ export class CreateAccountComponent implements OnInit {
     this._accountService.createAccount(account).subscribe((result) => {
       this.isLoading = false;
       this._matDialogRef.close(true);
+    });
+  }
+
+  toggleShowPassword() {
+    this.passwordField.nativeElement.type == 'password' ?
+      this.passwordField.nativeElement.type = 'text' : this.passwordField.nativeElement.type = 'password';
+  }
+
+  generatePassword() {
+    this._toolService.generatePassword().subscribe((result) => {
+      console.log(result);
+      this.form.get('password').setValue(result);
     });
   }
 

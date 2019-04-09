@@ -29,6 +29,7 @@ namespace WebAPi
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddTransient<IBreachService, BreachService>();
+            services.AddTransient<IToolService, ToolService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

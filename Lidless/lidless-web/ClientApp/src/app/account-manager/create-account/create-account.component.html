@@ -10,9 +10,17 @@
     <mat-form-field>
       <input matInput formControlName="host" placeholder="Host" />
     </mat-form-field>
-    <mat-form-field>
-      <input matInput formControlName="password" type="password" placeholder="Password" />
-    </mat-form-field>
+    <div fxLayout="row" class="align-center">
+      <mat-form-field>
+        <input matInput formControlName="password" type="password" placeholder="Password" #passwordField />
+      </mat-form-field>
+      <button mat-icon-button (click)="generatePassword()">
+        <mat-icon class="mdi mdi-key-variant" color="primary"></mat-icon>
+      </button>
+      <button mat-icon-button (click)="toggleShowPassword()">
+        <mat-icon class="mdi mdi-eye" color="primary"></mat-icon>
+      </button>
+    </div>
     <mat-checkbox formControlName="domainRestricted">Domain Restricted</mat-checkbox>
   </form>
 </mat-dialog-content>

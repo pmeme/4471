@@ -32,11 +32,6 @@ import { ViewBreachesComponent } from './account-manager/view-breaches/view-brea
 import { SanitizePipe } from './pipes/sanitize.pipe';
 import { ChromePopupComponent } from './chrome-popup/chrome-popup.component';
 
-// AoT requires an exported function for factories
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,13 +69,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatButtonModule,
     HttpClientModule,
     MatDialogModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (HttpLoaderFactory),
-        deps: [HttpClient]
-      }
-    }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
