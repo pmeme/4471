@@ -62,6 +62,7 @@ export class CreateAccountComponent implements OnInit {
       username: this.form.controls.username.value,
       host: this.form.controls.host.value,
       password: this.form.controls.password.value,
+      updatedDate: Date.now().toString(),
       domainRestricted: this.form.get('domainRestricted').value
     };
 

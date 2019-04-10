@@ -61,7 +61,6 @@ export class ChangeAccountComponent implements OnInit {
 
   generatePassword() {
     this._toolService.generatePassword().subscribe((result) => {
-      console.log(result);
       this.form.get('password').setValue(result);
     });
   }

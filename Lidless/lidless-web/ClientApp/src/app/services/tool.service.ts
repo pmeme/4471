@@ -14,7 +14,7 @@ export class ToolService {
     let options = {
       headers: new HttpHeaders({
       }),
-      responseType: 'text'
+      responseType: 'text' as any
     };
     return this._httpClient.get<string>('https://localhost:44363/api/tool/generate', options);
   }

@@ -35,7 +35,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'files',
+    path: 'notifications',
     component: FileManagerComponent,
     canActivate: [AuthGuard]
   },

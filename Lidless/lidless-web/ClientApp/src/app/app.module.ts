@@ -31,6 +31,8 @@ import { ChangeAccountComponent } from './account-manager/change-account/change-
 import { ViewBreachesComponent } from './account-manager/view-breaches/view-breaches.component';
 import { SanitizePipe } from './pipes/sanitize.pipe';
 import { ChromePopupComponent } from './chrome-popup/chrome-popup.component';
+import { NotificationService } from './services/notifications/notification.service';
+import { ChromeNotificationService } from './services/notifications/impl/notifications.chrome';
 
 @NgModule({
   declarations: [
@@ -77,6 +79,7 @@ import { ChromePopupComponent } from './chrome-popup/chrome-popup.component';
   providers: [
     AuthenticationService,
     ElectronService,
+    { provide: NotificationService, useClass: ChromeNotificationService },
     AuthGuard,
     PwndService
   ],

@@ -20,11 +20,11 @@ namespace WebAPi.Controllers
         }
 
         [HttpGet("breaches/{account}/{domain?}")]
-        public IActionResult GetBreaches(string account, string domain = null)
+        public async Task<IActionResult> GetBreaches(string account, string domain = null)
         {
             try
             {
-                return Ok(_breachService.GetBreaches(account, domain).Result);
+                return Ok(await _breachService.GetBreaches(account, domain));
             }
             catch(Exception ex)
             {
@@ -33,11 +33,11 @@ namespace WebAPi.Controllers
         }
 
         [HttpGet("pastes/{account}")]
-        public IActionResult GetPastes(string account)
+        public async Task<IActionResult> GetPastes(string account)
         {
             try
             {
-                return Ok(_breachService.GetPastes(account).Result);
+                return Ok(await _breachService.GetPastes(account));
             }
             catch (Exception ex)
             {

@@ -10,7 +10,7 @@ export class ChromePopupComponent implements OnInit {
 
   constructor(
   ) {
-    chrome.tabs.create({ active: true, url: chrome.extension.getURL('../index.html') });
+    chrome.tabs.create({ active: true, url: chrome.extension.getURL('index.html#window') }, () => { console.log('created') });
   }
 
   ngOnInit() {
