@@ -59,6 +59,7 @@
 
 <mat-menu #actionsMenu="matMenu">
   <ng-template matMenuContent let-item="item">
+    <button (click)="copyPass(item)" mat-menu-item>Copy</button>
     <button (click)="deleteAccount(item)" mat-menu-item>Delete</button>
     <button (click)="changeAccount(item)" mat-menu-item>Change</button>
   </ng-template>

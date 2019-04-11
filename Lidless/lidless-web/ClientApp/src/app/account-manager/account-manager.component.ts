@@ -54,6 +54,21 @@ export class AccountManagerComponent implements OnInit, AfterViewInit {
     ref.componentInstance.acc = account;
   }
 
+  public copyPass(account: Account) {
+    this.copyToClipboard(account.password);
+  }
+
+  private copyToClipboard(text: string){
+    let selBox: HTMLTextAreaElement = document.createElement('textarea');
+    selBox.style.opacity = '0';
+    selBox.value = text;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+  } 
+
   public createAccountDialog() {
     this._matDialog.open(CreateAccountComponent, { disableClose: false, width: '300px' } as MatDialogConfig);
   }
