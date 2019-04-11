@@ -7,6 +7,7 @@ import { ChangeAccountComponent } from './change-account/change-account.componen
 import { Observable, Subscription, interval } from 'rxjs';
 import { Account } from '../services/models/Account.model';
 import { tap, retryWhen } from 'rxjs/operators';
+import { EncryptService } from '../services/encrypt.service';
 
 @Component({
   selector: 'account-manager',
@@ -21,10 +22,12 @@ export class AccountManagerComponent implements OnInit, AfterViewInit {
   constructor(
     private _accountService: AccountService,
     private _breachService: PwndService,
-    private _matDialog: MatDialog
+    private _matDialog: MatDialog,
+    private _encryptService: EncryptService
   ) {
     this.data = this._accountService.getAccounts().valueChanges().pipe(tap((result) => {
       result.forEach(x => {
+        x.password = this._encryptService.decrypt(x.password);
         if (!x.breaches)
           this._breachService.getAccountBreaches(x).pipe(retryWhen((err) => interval(10000) )).subscribe((result) => { x.breaches = result; });
 

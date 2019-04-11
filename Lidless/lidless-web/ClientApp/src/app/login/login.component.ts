@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
+import { EncryptService } from '../services/encrypt.service';
 
 @Component({
   selector: 'login',
@@ -25,7 +26,8 @@ export class LoginComponent implements AfterViewInit {
     private _authService: AuthenticationService,
     private _router: Router,
     private _viewContainerRef: ViewContainerRef,
-    private _matDialog: MatDialog
+    private _matDialog: MatDialog,
+    private _encryptService: EncryptService
   ) {
     _activatedRoute.queryParamMap.subscribe((result: ParamMap) => {
       this._redirectUrl = result.get("redirect");
@@ -59,6 +61,7 @@ export class LoginComponent implements AfterViewInit {
     this._authService.login(this.form.controls.email.value, this.form.controls.password.value).subscribe((result) => {
       this._navigate();
     }, () => { this.isLoading = false; this.error = "Failed to login" });
+    this._encryptService.saveKey(this.form.controls.password.value);
   }
 
   public register(): void {
