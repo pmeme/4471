@@ -59,12 +59,15 @@ export class AccountManagerComponent implements OnInit, AfterViewInit {
   }
 
   public printHiddenPassword(ele: Account) {
+    /*
     let txt: string = "";
 
     for (let x = 0; x < ele.password.length; x++)
       txt += '*';
 
     return txt;
+    */
+   return "********"; //Display fixed length string to avoid exposing unnecessary information about password.
   }
 
   public isAccountSevereStatus(account: Account) {
