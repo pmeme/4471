@@ -38,7 +38,7 @@ export class LoginComponent implements AfterViewInit {
   private setUpFormGroup(): void {
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [Validators.required, Validators.minLength(6)]) 
+      password: new FormControl(null, [Validators.required, Validators.minLength(6)])
     });
 
     this.form.valueChanges.subscribe((r) => {
@@ -84,11 +84,18 @@ export class LoginComponent implements AfterViewInit {
     this.matDialogRef.close(value);
   }
 
-  public setTemplate(template: TemplateRef<any>): void {
+  public setTemplate(template: TemplateRef<any>, validations: boolean): void {
     this.form.reset();
     this.error = "";
     let portal = new TemplatePortal(template, this._viewContainerRef);
     this.matDialogRef._containerInstance._portalOutlet.attachedRef.destroy();
     this.matDialogRef._containerInstance._portalOutlet.attachTemplatePortal(portal);
+    if (validations) {
+      var passwordRegex1: RegExp = /^.*([!@#$%^&\*\(\)_~|\\/><]+.*)+$/;
+      var passwordRegex2: RegExp = /^.*([0-9]+.*)+$/;
+      this.form.controls.password.setValidators([Validators.required, Validators.minLength(6), Validators.pattern(passwordRegex1), Validators.pattern(passwordRegex2)]);
+    } else {
+      this.form.controls.password.setValidators([Validators.required, Validators.minLength(6)]);
+    }
   }
 }

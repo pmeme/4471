@@ -1,7 +1,7 @@
 <ng-template #loginTemplate>
   <div fxLayout="row" fxLayoutAlign="space-between">
     <h2 mat-dialog-title class="header-text">Login</h2>
-    <a class="register-text" (click)="setTemplate(signupTemplate)">Register</a>
+    <a class="register-text" (click)="setTemplate(signupTemplate, true)">Register</a>
   </div>
   <mat-dialog-content>
     <form fxLayout="column" [formGroup]="form">
@@ -38,7 +38,7 @@
     <ng-container *ngIf="!isLoading; else loading">
       <button mat-raised-button color="primary" (click)="register()" [disabled]="!form.valid">REGISTER</button>
     </ng-container>
-    <button mat-raised-button color="accent" (click)="setTemplate(loginTemplate)">CANCEL</button>
+    <button mat-raised-button color="accent" (click)="setTemplate(loginTemplate, false)">CANCEL</button>
   </mat-dialog-actions>
 </ng-template>
 
